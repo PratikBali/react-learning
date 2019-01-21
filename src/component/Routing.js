@@ -1,6 +1,6 @@
 import React , {Component} from 'react';
 import '../index.scss';
-import { BrowserRouter, Link, NavLink } from "react-router-dom";
+import { BrowserRouter, NavLink } from "react-router-dom";
 import { Route } from "react-router";
 
 class Routing extends Component {
@@ -44,7 +44,7 @@ const ContentDetails = (props) => (
             props.match.params.contentName
             ?
             <div>
-                <img src={'http://lorempixel.com/400/200/'+props.match.params.contentName} />
+                <img src={'http://lorempixel.com/400/200/'+props.match.params.contentName} alt={props.match.params.contentName} />
             </div>
             :
             null
