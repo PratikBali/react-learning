@@ -10,8 +10,11 @@ import Children from './component/Children.js';
 import Design from './component/Design.js';
 
 import { Route } from "react-router";
-import { BrowserRouter, Link  } from "react-router-dom";
+import { BrowserRouter, Link, Switch  } from "react-router-dom";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import State from './component/State.js';
+import RouteGuard from './component/RouteGuard.js';
+import ModalComponent from './component/Modal.js';
 
 const App = ( ) => (
     <header>
@@ -19,14 +22,22 @@ const App = ( ) => (
         <BrowserRouter>
             <div className='row'>
                 <div className='col-md-2'>
-                    <Home/>
+                    <Route path="/" component={Home} />
+                    {/* <Home/> */}
                 </div>
                 <div className='col-md-10'>
+                <Switch>
                     <Route path="/about" component={About} />
                     <Route path="/login" component={Login} />
                     <Route path='/routing' component={Routing}/>
                     <Route path='/children' component={Children}/>
                     <Route path='/design-pattern' component={Design}/>
+                    <Route path='/state' component={State}/>
+                    <Route path='/route-guard' component={RouteGuard}/>
+                    <Route path='/modal' component={ModalComponent}/>
+                    <Route exact path="/" component={Empty} />
+                    <Route component={NotFound}/>
+                </Switch>
                 </div>
             </div>
         </BrowserRouter>
@@ -36,6 +47,19 @@ const About = ( ) => (
     <div>
         <h2 className='whitetext'>About</h2>
         <li><Link to='/' className='whitetext'>Home</Link></li>
+    </div>
+
+)
+const NotFound = ( ) => (
+    <div>
+        <h2 className='whitetext'>Page Not Found</h2>
+        <li><Link to='/' className='whitetext'>Home</Link></li>
+    </div>
+
+)
+const Empty = ( ) => (
+    <div>
+
     </div>
 
 )
@@ -55,6 +79,9 @@ const Home = ( ) => (
             <li><Link  to='/routing' className='whitetext'>Routing</Link></li>
             <li><Link  to='/children' className='whitetext'>Children API</Link></li>
             <li><Link  to='/design-pattern' className='whitetext'>Design Pattern</Link></li>
+            <li><Link  to='/state' className='whitetext'>setState() </Link></li>
+            <li><Link  to='/route-guard' className='whitetext'>Route Guard </Link></li>
+            <li><Link  to='/modal' className='whitetext'>React Modal </Link></li>
         </ul>
     </div>
 )
