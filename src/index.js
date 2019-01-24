@@ -1,20 +1,19 @@
 import React from 'react';
 import ReactDOM  from 'react-dom';
-// import * as $ from "jquery";
-// import './index.scss';
-// import TodoItem from './component/TodoItem.js';
-// import TodoForm from './component/TodoForm.js';
-// import bindFunctions from './util/utils.js'
+import {Route} from "react-router";
+import { BrowserRouter, Link, Switch  } from "react-router-dom";
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import { createGlobalStyle } from 'styled-components';
+
 import Routing from './component/Routing.js';
 import Children from './component/Children.js';
 import Design from './component/Design.js';
-
-import { Route } from "react-router";
-import { BrowserRouter, Link, Switch  } from "react-router-dom";
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import State from './component/State.js';
 import RouteGuard from './component/RouteGuard.js';
 import ModalComponent from './component/Modal.js';
+import StyledComponents from './component/StyledComponents.js';
+import Color from './component/Color';
+
 
 const App = ( ) => (
     <header>
@@ -22,8 +21,8 @@ const App = ( ) => (
         <BrowserRouter>
             <div className='row'>
                 <div className='col-md-2'>
-                    <Route path="/" component={Home} />
-                    {/* <Home/> */}
+                    {/* <Route path="/" component={Home} /> */}
+                    <Nav/>
                 </div>
                 <div className='col-md-10'>
                 <Switch>
@@ -35,6 +34,9 @@ const App = ( ) => (
                     <Route path='/state' component={State}/>
                     <Route path='/route-guard' component={RouteGuard}/>
                     <Route path='/modal' component={ModalComponent}/>
+                    <Route path='/styled' component={StyledComponents}/>
+                    <Route path='/color' component={Color}/>
+
                     <Route exact path="/" component={Empty} />
                     <Route component={NotFound}/>
                 </Switch>
@@ -70,160 +72,24 @@ const Login = ( ) => (
     </div>
 
 )
-const Home = ( ) => (
+const Nav = ( ) => (
     <div>
         <ul>
             <li><Link to='/' className='whitetext'>Home</Link></li>
             <li><Link  to='/about' className='whitetext'>About</Link></li>
             <li><Link  to='/login' className='whitetext'>Login</Link></li>
+            <li><Link  to='/color' className='whitetext'>Color</Link></li>
             <li><Link  to='/routing' className='whitetext'>Routing</Link></li>
             <li><Link  to='/children' className='whitetext'>Children API</Link></li>
             <li><Link  to='/design-pattern' className='whitetext'>Design Pattern</Link></li>
             <li><Link  to='/state' className='whitetext'>setState() </Link></li>
             <li><Link  to='/route-guard' className='whitetext'>Route Guard </Link></li>
             <li><Link  to='/modal' className='whitetext'>React Modal </Link></li>
+            <li><Link  to='/styled' className='whitetext'>Styled Components </Link></li>
         </ul>
     </div>
 )
 
-ReactDOM.render(
-<App/>,    document.getElementById('root'));
+ReactDOM.render(<App/>,   document.getElementById('root'));
 
-// class Hello extends Component {
-//     constructor() {
-
-//         super();
-//         // we are going to bind this functions in single step by using
-//         // this.changeStatus = this.changeStatus.bind(this);
-//         // this.update = this.update.bind(this);
-//         // this.add = this.add.bind(this);
-//         // this.edit = this.edit.bind(this);
-//         // this.delete = this.delete.bind(this);
-
-//         // bind all functions in single step
-//         bindFunctions.call(this, ['changeStatus','update','add','edit','delete'])
-
-
-//         this.state = {
-//             current: '',
-//             colors: [
-//                 {key: 1, value: 'magenta', completed: false},
-//                 {key: 2, value: 'red', completed: false},
-//                 {key: 3, value: 'green', completed: false},
-//                 {key: 4, value: 'blue', completed: false},
-//                 ],
-//             users: [],
-//             todos: ['learn react', 'learn python']
-//         }
-//     }
-
-
-//     componentWillMount() { }
-//     componentDidMount() {
-//         $.ajax({
-//             url: 'https://jsonplaceholder.typicode.com/users',
-//             success: (data) => {
-//                 this.setState({
-//                     users:data
-//                 })
-//             }
-//         })
-
-//     }
-
-//     componentWillReceiveProps() { }
-//     shouldComponentUpdate() {  return true;}
-//     componentWillUpdate() { }
-
-
-//     changeStatus(index) {
-//         var colors = this.state.colors;
-//         var color = colors[index];
-//         color.completed = !color.completed;
-
-//         this.setState({colors})
-
-//     }
-//     update(event) {
-//         this.setState({
-//             current: event.target.value
-//         })
-//     }
-//     add(event) {
-//         event.preventDefault(); // no refresh
-//         let colors = this.state.colors
-//         var color = this.state.current
-//         colors.push({
-//             key: 5,
-//             value: color,
-//             completed: false,
-//         })
-
-//         this.setState({ colors, current: '' })
-//     }
-//     delete(index) {
-//         let colors = this.state.colors
-//         colors.splice(index,1)
-//         this.setState({colors: colors})
-//     }
-//     edit(index, newColor) {
-//         var colors = this.state.colors;
-//         var color = colors[index];
-//         color.value = newColor;
-
-//         this.setState({colors})
-
-//     }
-//     render() {
-//         const {users} = this.state;
-//         const {todos} = this.state;
-
-//         return(
-//             <section>
-//                 <div>
-//                 {/* <TodoForm currentColor={this.state.current} updateColor={this.update} addColor={this.add}  />
-//                 <ul>{
-//                     this.state.colors.map((task, index) => {
-//                         return <TodoItem key={index} data={task} index={index}
-//                         clickHandler={this.changeStatus}
-//                         deleteColor={this.delete}
-//                         editColor={this.edit}
-//                         />})
-//                     }
-//                 </ul> */}
-//                 </div>
-
-//                 <div className='whitetext'>
-//                     <ul>
-//                         {
-//                             users.map( (user, index) => {
-//                                 return <li key={user.id}>{ user.name}</li>
-//                             })
-//                         }
-//                      </ul>
-//                 </div>
-
-//                 <div className='whitetext'>
-//                         <form onSubmit={(e) => {
-//                             e.preventDefault();
-//                                 // todos.push(this.refs.addTodo.value);
-//                                 // this.setState({todos:todos});
-//                                 this.setState({
-//                                     todos:todos.concat(this.refs.addTodo.value)
-//                                 })
-//                                 this.refs.addTodo.value = "";
-//                             }} >
-//                             <input type="text" ref="addTodo" />
-//                             <button type="submit">Add To do</button>
-//                         </form>
-//                         <TodoItem todos={todos} />
-//                 </div>
-
-//                 <div>
-
-//                 </div>
-//             </section>
-//         )
-//     }
-
-// }
+createGlobalStyle([`body { background-color:  black; }`])
