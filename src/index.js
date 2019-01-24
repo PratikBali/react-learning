@@ -13,6 +13,7 @@ import RouteGuard from './component/RouteGuard.js';
 import ModalComponent from './component/Modal.js';
 import StyledComponents from './component/StyledComponents.js';
 import Color from './component/Color';
+import ErrorHandling from './component/ErrorHandling';
 
 
 const App = ( ) => (
@@ -36,6 +37,7 @@ const App = ( ) => (
                     <Route path='/modal' component={ModalComponent}/>
                     <Route path='/styled' component={StyledComponents}/>
                     <Route path='/color' component={Color}/>
+                    <Route path='/error' component={ErrorHandling}/>
 
                     <Route exact path="/" component={Empty} />
                     <Route component={NotFound}/>
@@ -86,6 +88,7 @@ const Nav = ( ) => (
             <li><Link  to='/route-guard' className='whitetext'>Route Guard </Link></li>
             <li><Link  to='/modal' className='whitetext'>React Modal </Link></li>
             <li><Link  to='/styled' className='whitetext'>Styled Components </Link></li>
+            <li><Link  to='/error' className='whitetext'>Error Handling </Link></li>
         </ul>
     </div>
 )
