@@ -5,6 +5,7 @@ import '../index.scss';
 import ColorHelper from './ColorHelper.js';
 import TodoForm from './ColorForm.js';
 import TodoItem from './TodoItem.js';
+import produce from 'immer'
 
 class Color extends Component {
     constructor() {
@@ -32,13 +33,9 @@ class Color extends Component {
             users: [],
             todos: ['learn react', 'learn python']
         }
+
     }
 
-
-    // componentWillMount() { }
-    // componentWillReceiveProps() { }
-    // shouldComponentUpdate() {  return true;}
-    // componentWillUpdate() { }
     componentDidMount() {
         $.ajax({
             url: 'https://jsonplaceholder.typicode.com/users',
@@ -49,16 +46,21 @@ class Color extends Component {
             }
         })
 
+        this.refs.addTodo.focus()
     }
 
 
 
     changeStatus(index) {
-        var colors = this.state.colors;
-        var color = colors[index];
-        color.completed = !color.completed;
+        // var colors = this.state.colors;
+        // var color = colors[index];
+        // color.completed = !color.completed;
 
-        this.setState({colors})
+        const newColors = produce(this.state.colors, function(colors) {
+            colors[index].completed = !colors[index].completed
+        })
+
+        this.setState({colors: newColors})
 
     }
     update(event) {
@@ -118,6 +120,8 @@ class Color extends Component {
                                 todos:todos.concat(this.refs.addTodo.value)
                             })
                             this.refs.addTodo.value = "";
+                            this.refs.addTodo.getInputDOMNode().focus()
+
                         }} >
                         <input type="text" ref="addTodo" />
                         <button type="submit">Add To do</button>
