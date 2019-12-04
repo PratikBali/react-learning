@@ -59,6 +59,8 @@ class Color extends Component {
         const newColors = produce(this.state.colors, function(colors) {
             colors[index].completed = !colors[index].completed
         })
+        console.log(this.state.colors); // old array
+        console.log(newColors); // new array
 
         this.setState({colors: newColors})
 

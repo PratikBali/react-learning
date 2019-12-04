@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
 class ColorHelper extends Component {
-    componentWillReceiveProps(todoProps) { console.log('Will Receive Props');
-    }
 
     constructor(props) {
 

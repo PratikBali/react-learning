@@ -49,8 +49,12 @@ const ErrorHandling = loadable({
     loading: () => <div>ErrorHandling Loading</div>
 })
 const Reusable = loadable({
-    loader: () => import(/*webpackChunkName: 'ErrorHandling' */ './component/Reusable.js'),
+    loader: () => import(/*webpackChunkName: 'Reusable' */ './component/Reusable.js'),
     loading: () => <div>ErrorHandling Loading</div>
+})
+const Deprecated = loadable({
+    loader: () => import(/*webpackChunkName: 'Deprecated' */ './component/Deprecated.js'),
+    loading: () => <div>Deprecated Loading</div>
 })
 
 const App = ( ) => (<header>
@@ -78,6 +82,7 @@ const App = ( ) => (<header>
                     <Route path='/pub' component={ProviderComponent}/>
                     <Route path='/sub' component={ConsumerComponent}/>
                     <Route path='/reuse' component={Reusable}/>
+                    <Route path='/depr' component={Deprecated}/>
 
                     <Route component={NotFound}/>
                 </Switch>
@@ -118,6 +123,7 @@ const Nav = ( ) => (<div>
             <li><Link  to='/pub' className='whitetext'>Provider Component </Link></li>
             <li><Link  to='/sub' className='whitetext'>Consumer Component </Link></li>
             <li><Link  to='/reuse' className='whitetext'>Reusable Component </Link></li>
+            <li><Link  to='/depr' className='whitetext'>Deprecates life-cycle </Link></li>
         </ul>
     </div>
 )
