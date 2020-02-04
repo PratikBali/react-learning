@@ -65,27 +65,30 @@ const App = ( ) => (<header>
                     {/* <Route path="/" component={Home} /> */}
                     <Nav/>
                 </div>
-                <div className='col-md-10'>
-                <Switch>
-                    <Route exact path="/" component={DemoLoader} />
-                    <Route path="/about" component={About} />
-                    <Route path="/login" component={Login} />
-                    <Route path='/routing' component={Routing}/>
-                    <Route path='/children' component={Children}/>
-                    <Route path='/design-pattern' component={Design}/>
-                    <Route path='/state' component={State}/>
-                    <Route path='/route-guard' component={RouteGuard}/>
-                    <Route path='/modal' component={ModalComponent}/>
-                    <Route path='/styled' component={StyledComponents}/>
-                    <Route path='/color' component={Color}/>
-                    <Route path='/error' component={ErrorHandling}/>
-                    <Route path='/pub' component={ProviderComponent}/>
-                    <Route path='/sub' component={ConsumerComponent}/>
-                    <Route path='/reuse' component={Reusable}/>
-                    <Route path='/depr' component={Deprecated}/>
+                <div className='col-md-3'>
+                    <Switch>
+                        <Route exact path="/" component={DemoLoader} />
+                        <Route path="/about" component={About} />
+                        <Route path="/login" component={Login} />
+                        <Route path='/routing' component={Routing}/>
+                        <Route path='/children' component={Children}/>
+                        <Route path='/design-pattern' component={Design}/>
+                        <Route path='/state' component={State}/>
+                        <Route path='/route-guard' component={RouteGuard}/>
+                        <Route path='/modal' component={ModalComponent}/>
+                        <Route path='/styled' component={StyledComponents}/>
+                        <Route path='/color' component={Color}/>
+                        <Route path='/error' component={ErrorHandling}/>
+                        <Route path='/pub' component={ProviderComponent}/>
+                        <Route path='/sub' component={ConsumerComponent}/>
+                        <Route path='/reuse' component={Reusable}/>
+                        <Route path='/depr' component={Deprecated}/>
 
-                    <Route component={NotFound}/>
-                </Switch>
+                        <Route component={NotFound}/>
+                    </Switch>
+                </div>
+                <div className='col-md-2'>
+                    Hi
                 </div>
             </div>
         </BrowserRouter>

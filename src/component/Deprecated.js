@@ -15,9 +15,9 @@ class Deprecated  extends Component {
             currentResource : event.target.value
         })
     }
+    
     render() {
-
-        // const { currentResource } = this.state
+        const currentResource = this.state
         const [value , setValue] = useState('color')
 
         const state  = useState()

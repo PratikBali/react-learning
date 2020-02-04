@@ -75,7 +75,7 @@ class Color extends Component {
         let colors = this.state.colors
         var color = this.state.current
         colors.push({
-            key: 5,
+            key: colors.length + 1,
             value: color,
             completed: false,
         })
@@ -122,7 +122,7 @@ class Color extends Component {
                                 todos:todos.concat(this.refs.addTodo.value)
                             })
                             this.refs.addTodo.value = "";
-                            this.refs.addTodo.getInputDOMNode().focus()
+                            this.refs.addTodo.focus()
 
                         }} >
                         <input type="text" ref="addTodo" />
